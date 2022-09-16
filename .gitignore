@@ -11,8 +11,11 @@ log.txt
 *.sublime-workspace
 .vscode/
 npm-debug.log*
+
 /images
 ./images
+./images/
+images
 images/
 
 
@@ -48,5 +51,5 @@ venv/
 !.elasticbeanstalk/*.global.yml
 
 dist
-./dist
 dist/
+./dist

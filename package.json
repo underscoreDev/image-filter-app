@@ -4,7 +4,6 @@
   "description": "",
   "main": "dist/server.js",
   "scripts": {
-    "start": "node dist/server.js",
     "prettier": "prettier --config .prettierrc \"./**/*.ts\" --write",
     "dev": "rm -rf dist && tsc-watch --noClear -p tsconfig.json --onSuccess \"node ./dist/server.js\"",
     "build": "rm -rf dist && tsc && cp -rf package.json dist/ && cp -rf .npmrc dist/ && cd dist/ && zip -r Archive.zip ./ && cd .."

@@ -11,11 +11,7 @@ const app = (0, express_1.default)();
 // Body parser
 app.use(express_1.default.json({ limit: "10kb" }));
 // API Routes
-app.use("/api/v1/filteredimage", image_route_1.default);
-app.get("/api/v1", (_req, res) => res.status(200).json({
-    message: "success",
-    data: "Welcome to  UDACITY IMAGE FILTER server",
-}));
+app.use("/api/v1", image_route_1.default);
 app.get("/", (_req, res) => res.status(200).json({
     message: "success",
     data: "Welcome to UDACITY IMAGE FILTER server",

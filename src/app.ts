@@ -9,13 +9,8 @@ const app: Application = express();
 app.use(express.json({ limit: "10kb" }));
 
 // API Routes
-app.use("/api/v1/filteredimage", imageRouter);
-app.get("/api/v1", (_req: Request, res: Response) =>
-  res.status(200).json({
-    message: "success",
-    data: "Welcome to  UDACITY IMAGE FILTER server",
-  })
-);
+app.use("/api/v1", imageRouter);
+
 app.get("/", (_req: Request, res: Response) =>
   res.status(200).json({
     message: "success",
