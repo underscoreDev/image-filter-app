@@ -34,7 +34,7 @@ plugins/ios.json
 $RECYCLE.BIN/
 dist/
 /dist
-./dtst
+./dist
 
 .DS_Store
 Thumbs.db
