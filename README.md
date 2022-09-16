@@ -18,3 +18,9 @@ Follow the process described in the course to `eb init` a new application and `e
 ```bash
     http://image-filter-starter-code-dev222222222222222222222222222222.us-east-1.elasticbeanstalk.com
 ```
+
+### Test Url
+
+```bash
+    http://image-filter-starter-code-dev222222222222222222222222222222.us-east-1.elasticbeanstalk.com/api/v1/filteredimage?image_url=https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg
+```
