@@ -1,19 +1,29 @@
-import { filterImageFromURL, deleteLocalFiles } from "./util/util";
+import app from "./app";
 
-const app = express();
 const port = process.env.PORT || 8982;
-app.use(express.json());
 
-app.get("/", async (req: Request, res: Response) => {
-  res.send("try GET /filteredimage?image_url={{}}");
+process.on("uncaughtException", (err) => {
+  console.log("****** UNCAUGHT EXCEPTION 🔥🔥🔥 SHUTTING DOWN *****");
+  console.log(err.name, err.message);
+  process.exit(1);
 });
 
 // Start the Server
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`server running http://localhost:${port}`);
   console.log(`press CTRL+C to stop server`);
 });
 
+process.on("unhandledRejection", (err: any) => {
+  console.log(err.name, err.message);
+  console.log("****** UMHANDLED REJECTION 🔥🔥🔥 SHUTTING DOWN *****");
+  server.close(() => process.exit(1));
+});
+
+process.on("SIGTERM", () => {
+  console.log("****** SIGTERM RECEIVED 🔥🔥🔥 SHUTTING DOWN *****");
+  server.close(() => console.log("🔥🔥🔥 process terminated"));
+});
 // Init the Express application
 
 // Set the network port
