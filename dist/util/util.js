@@ -12,9 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteLocalFiles = exports.filterImageFromURL = void 0;
+exports.deleteLocalFiles = exports.filterImageFromUrl = void 0;
 const fs_1 = __importDefault(require("fs"));
-const Jimp = require("jimp");
+const jimp_1 = __importDefault(require("jimp"));
 // filterImageFromURL
 // helper function to download, filter, and save the filtered image locally
 // returns the absolute path to the local image
@@ -22,27 +22,25 @@ const Jimp = require("jimp");
 //    inputURL: string - a publicly accessible url to an image file
 // RETURNS
 //    an absolute path to a filtered image locally saved file
-function filterImageFromURL(inputURL) {
-    return __awaiter(this, void 0, void 0, function* () {
-        return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                const photo = yield Jimp.read(inputURL);
-                const outpath = "/tmp/filtered." + Math.floor(Math.random() * 2000) + ".jpg";
-                yield photo
-                    .resize(256, 256) // resize
-                    .quality(60) // set JPEG quality
-                    .greyscale() // set greyscale
-                    .write(__dirname + outpath, (img) => {
-                    resolve(__dirname + outpath);
-                });
-            }
-            catch (error) {
-                reject(error);
-            }
-        }));
-    });
-}
-exports.filterImageFromURL = filterImageFromURL;
+const filterImageFromUrl = (inputURL) => __awaiter(void 0, void 0, void 0, function* () {
+    return new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            const photo = yield jimp_1.default.read(inputURL);
+            const outpath = "/tmp/filtered." + Math.floor(Math.random() * 2000) + ".jpg";
+            yield photo
+                .resize(256, 256) // resize
+                .quality(100) // set JPEG quality
+                .greyscale() // set greyscale
+                .write(__dirname + outpath, (img) => {
+                resolve(__dirname + outpath);
+            });
+        }
+        catch (error) {
+            reject(error);
+        }
+    }));
+});
+exports.filterImageFromUrl = filterImageFromUrl;
 // deleteLocalFiles
 // helper function to delete files on the local disk
 // useful to cleanup after tasks

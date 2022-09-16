@@ -28,6 +28,9 @@ plugins/
 plugins/android.json
 plugins/ios.json
 $RECYCLE.BIN/
+dist/
+/dist
+./dtst
 
 .DS_Store
 Thumbs.db
