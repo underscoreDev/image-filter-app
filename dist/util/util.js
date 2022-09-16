@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteLocalFiles = exports.filterImageFromUrl = void 0;
 const fs_1 = __importDefault(require("fs"));
 const jimp_1 = __importDefault(require("jimp"));
+const path_1 = __importDefault(require("path"));
 // filterImageFromURL
 // helper function to download, filter, and save the filtered image locally
 // returns the absolute path to the local image
@@ -22,17 +23,20 @@ const jimp_1 = __importDefault(require("jimp"));
 //    inputURL: string - a publicly accessible url to an image file
 // RETURNS
 //    an absolute path to a filtered image locally saved file
+const imagesFullPath = path_1.default.resolve(__dirname, "../../images/filteredImage/");
 const filterImageFromUrl = (inputURL) => __awaiter(void 0, void 0, void 0, function* () {
     return new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const photo = yield jimp_1.default.read(inputURL);
-            const outpath = "/tmp/filtered." + Math.floor(Math.random() * 2000) + ".jpg";
+            // const outpath =
+            //   "/tmp/filtered." + Math.floor(Math.random() * 2000) + ".jpg";
+            const savePath = path_1.default.normalize(`${imagesFullPath}-${Math.floor(Math.random() * 2000)}.jpg`);
             yield photo
-                .resize(256, 256) // resize
+                .resize(300, 300) // resize
                 .quality(100) // set JPEG quality
                 .greyscale() // set greyscale
-                .write(__dirname + outpath, (img) => {
-                resolve(__dirname + outpath);
+                .write(savePath, (img) => {
+                resolve(savePath);
             });
         }
         catch (error) {

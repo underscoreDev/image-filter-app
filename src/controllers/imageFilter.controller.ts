@@ -11,12 +11,24 @@ export const filterImage = async (
   next: NextFunction
 ) => {
   const { image_url } = req.query;
-  if (!isImage(image_url)) {
-    return next(new AppError("Please enter a valid image url", 400));
+
+  if (!image_url) {
+    return next(new AppError("Please enter an image url", 400));
   }
+
+  if (!isImage(image_url)) {
+    return next(
+      new AppError("Invalid Image Url. Please enter a valid image url", 400)
+    );
+  }
+
   const filteredImage = await filterImageFromUrl(`${image_url}`);
-  console.log(filteredImage);
-  res.status(200).json({ status: "success", data: filteredImage });
-  //   return res.status(200).sendFile(filteredImage);
-  await deleteLocalFiles([filteredImage]);
+
+  res.status(200).sendFile(filteredImage, (err: any) => {
+    if (err) {
+      new AppError("An Error Occoured", 400);
+    } else {
+      deleteLocalFiles([filteredImage]);
+    }
+  });
 };
