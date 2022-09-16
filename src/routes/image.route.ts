@@ -4,6 +4,6 @@ import { catchAsync } from "./../middlewares/catchAsyncError.middleware";
 
 const imageRouter = Router();
 
-imageRouter.route("/").get(catchAsync(filterImage));
+imageRouter.route("/filteredimage").get(catchAsync(filterImage));
 
 export default imageRouter;
