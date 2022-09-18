@@ -17,7 +17,7 @@
   "bugs": {
     "url": "issues"
   },
-  "homepage": "https://github.com/underscoreDev/udacity-c2-image-filter#readme",
+  "homepage": "https://github.com/underscoreDev/image-filter-app#readme",
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.14",
