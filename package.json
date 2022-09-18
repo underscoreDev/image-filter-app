@@ -15,7 +15,7 @@
   "author": "Godswill Edet",
   "license": "ISC",
   "bugs": {
-    "url": "issues"
+    "url": "https://github.com/underscoreDev/image-filter-app.git/issues"
   },
   "homepage": "https://github.com/underscoreDev/image-filter-app#readme",
   "devDependencies": {
